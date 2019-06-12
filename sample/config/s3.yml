@@ -1,0 +1,14 @@
+upload:
+  - css
+  - fonts
+  - images
+  - js
+  - "*.html*"
+domain:
+  name: ""
+s3:
+  bucket: "www.cool-website-bucket.com"
+  access_key_id: "CHANGETHIS"
+  secret_access_key: "CHANGETHIS"
+cloudfront:
+route53:
