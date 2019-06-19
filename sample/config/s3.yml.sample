@@ -1,0 +1,9 @@
+domain:
+  name: "www.site.com"
+s3:
+  bucket: "www.site.com"
+  region: "us-west-1"
+  access_key_id: "KEY"
+  secret_access_key: "ACCESS"
+cloudfront:
+route53:
