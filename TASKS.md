@@ -17,3 +17,4 @@
 
 - [ ] precompile files (HAML, SLIM, ERB, SCSS)
 - [ ] CLI tool
+- [ ] gzip for css/js

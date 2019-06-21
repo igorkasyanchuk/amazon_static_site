@@ -27,7 +27,24 @@ module AmazonStaticSite
       )
     end
 
+    def dns
+      # connection.accounts.first.value[:id]
+      # zones = connection.zones
+      # zones.create('server.com', {:id=>"c1dbd48dd25976f285034f9a0a31cf01"})
+      in_cloudflare do |connection|
+        zones = connection.zones
+        binding.pry
+        puts zones
+      end
+    end
+
     private
+
+    def in_cloudflare
+      Cloudflare.connect(key: config.cloudflare.api_key, email: config.cloudflare.email) do |connection|
+        yield(connection)
+      end
+    end
 
     def s3_client
       @s3_client ||= Aws::S3::Client.new(aws_credentials)
@@ -35,10 +52,6 @@ module AmazonStaticSite
 
     def s3_resource
       @s3_resource ||= Aws::S3::Resource.new(aws_credentials)
-    end
-
-    def cloudfront_client
-      @cloudfront_client ||= Aws::CloudFront::Client.new(aws_credentials)
     end
 
     def aws_credentials

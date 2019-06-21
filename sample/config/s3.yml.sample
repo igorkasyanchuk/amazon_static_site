@@ -5,5 +5,7 @@ s3:
   region: "us-west-1"
   access_key_id: "KEY"
   secret_access_key: "ACCESS"
-cloudfront:
-route53:
+cloudflare:
+  email:
+  api_key:
+

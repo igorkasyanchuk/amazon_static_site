@@ -4,6 +4,7 @@ require 'yaml'
 require 'rake'
 require 'aws-sdk-s3'
 require 'json'
+require 'cloudflare'
 
 module AmazonStaticSite
   class Error < StandardError; end

@@ -18,6 +18,8 @@ module AmazonStaticSite
       #uploader.upload
 
       service.publish_static_website_on_s3
+
+      service.dns
     end
   end
 end
