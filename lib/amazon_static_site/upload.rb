@@ -28,7 +28,7 @@ module AmazonStaticSite
 
       puts "uploading to: #{upload_to}"
   
-      worker.service.bucket.object(upload_to).upload_file(file, aws_options)
+      worker.service.primary.object(upload_to).upload_file(file, aws_options)
     end
   end
 end

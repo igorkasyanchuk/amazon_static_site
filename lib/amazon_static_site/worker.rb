@@ -10,7 +10,7 @@ module AmazonStaticSite
       @uploader = Upload.new(self)
 
       puts "Connecting to Amazon:"
-      service.bucket
+      service.prepare_buckets
 
       puts "Config file: #{arguments[0]}"
       puts "Folder to upload: #{arguments[1]}"
