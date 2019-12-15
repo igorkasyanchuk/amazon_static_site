@@ -1,11 +1,11 @@
 domain:
-  name: "www.site.com"
+  primary: "www.site.com"
+  secondary: "site.com"
+  root: "site.com"
 s3:
-  bucket: "www.site.com"
-  region: "us-west-1"
+  region: us-west-1
   access_key_id: "KEY"
-  secret_access_key: "ACCESS"
+  secret_access_key: "SECRET"
 cloudflare:
-  email:
-  api_key:
-
+  email: email@site.org
+  api_key: "API"
