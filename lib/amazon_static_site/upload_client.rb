@@ -1,5 +1,5 @@
 module AmazonStaticSite
-  class Upload
+  class UploadClient
     attr_reader :worker
 
     def initialize(worker)

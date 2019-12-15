@@ -1,25 +1,18 @@
 module AmazonStaticSite
   class Worker
-    attr_reader :uploader
-    attr_reader :config, :folder, :service, :uploader
+    attr_reader :config, :service
 
     def initialize(arguments)
-      @config   = Config.new(arguments[0])
-      @folder   = arguments[1]
+      @config   = Config.new(file: arguments[0], folder: arguments[1])
       @service  = Service.new(@config)
-      @uploader = Upload.new(self)
 
       puts "Connecting to Amazon:"
-      service.prepare_buckets
+      service.run_s3
 
-      puts "Config file: #{arguments[0]}"
-      puts "Folder to upload: #{arguments[1]}"
+      puts "Config file: #{config.file}"
+      puts "Folder to upload: #{config.folder}"
 
-      #uploader.upload
-
-      service.publish_static_website_on_s3
-
-      service.dns
+      service.run_cloudflare
     end
   end
 end

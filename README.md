@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+`/usr/local/rvm/rubies/ruby-2.6.5/bin/ruby ./bin/amazon_static_site ./sample/config/site.yml ./sample`
 
 ## Local
 

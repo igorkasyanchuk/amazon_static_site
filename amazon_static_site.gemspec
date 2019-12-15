@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "activesupport"
   spec.add_dependency 'aws-sdk-s3'
   spec.add_dependency 'cloudflare'
+  spec.add_dependency 'sinatra'
 
   spec.add_development_dependency "bundler", "~> 1.17"
   spec.add_development_dependency "rake", "~> 10.0"
