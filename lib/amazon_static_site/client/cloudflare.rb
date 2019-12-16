@@ -5,20 +5,24 @@ module AmazonStaticSite
         in_cloudflare do |connection|
           account_id = cloudflare_account_id(connection)
 
-          puts "Creating #{domain_for_cloudflare} in account: #{account_id}"
-          connection.zones.create(domain_for_cloudflare, { id: account_id })
+          puts "Find or create #{domain_for_cloudflare} in account: #{account_id}"
 
-          zone = connection.zones.find_by_name(domain_for_cloudflare)
+          zone = fetch_zone(connection)
+          unless zone
+            connection.zones.create(domain_for_cloudflare, { id: account_id })
+            zone = fetch_zone(connection)
+          end
 
-          puts "Creating DNS records"
+          puts "Creating DNS records:".yellow
+          puts "- #{service.s3.s3_primary}"
+          puts "- #{service.s3.s3_secondary}"
 
           if primary_www?
-            dns_records = zone.dns_records
-            www = zone.dns_records.create('CNAME', 'www', 'www.railsjazz.com.s3-website-us-west-1.amazonaws.com', proxied: true)
-            non_www = zone.dns_records.create('CNAME', '.', 'railsjazz.com.s3-website-us-west-1.amazonaws.com', proxied: true)
+            www     = zone.dns_records.create('CNAME', 'www', service.s3.s3_primary, proxied: true)
+            non_www = zone.dns_records.create('CNAME', '.', service.s3.s3_secondary, proxied: true)
           else
-            www = zone.dns_records.create('CNAME', 'www', 'www.railsjazz.com.s3-website-us-west-1.amazonaws.com', proxied: true)
-            non_www = zone.dns_records.create('CNAME', '.', 'railsjazz.com.s3-website-us-west-1.amazonaws.com', proxied: true)
+            www     = zone.dns_records.create('CNAME', 'www', service.s3.s3_primary, proxied: true)
+            non_www = zone.dns_records.create('CNAME', '.', service.s3.s3_secondary, proxied: true)
           end
 
           puts '----'
@@ -39,8 +43,13 @@ module AmazonStaticSite
 
       private
 
+      def fetch_zone(connection)
+        connection.zones.find_by_name(domain_for_cloudflare)
+      end
+
       def in_cloudflare
-        Cloudflare.connect(key: config.cloudflare.api_key, email: config.cloudflare.email) do |connection|
+        # use Cloadflare API client
+        ::Cloudflare.connect(key: config.cloudflare.api_key, email: config.cloudflare.email) do |connection|
           yield(connection)
         end
       end

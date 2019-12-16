@@ -6,7 +6,7 @@ module AmazonStaticSite
       @config     = config
       @s3         = Client::S3.new(self)
       @cloudflare = Client::Cloudflare.new(self)
-      @upload     = Client::Upload.new(self)
+      @uploader   = Client::Upload.new(self)
     end
 
     def run_s3
@@ -15,11 +15,11 @@ module AmazonStaticSite
     end
 
     def run_cloudflare
-      #cloudflare.configure_dns
+      cloudflare.configure_dns
     end
 
     def run_upload
-      #uploader.upload(s3.primary)
+      uploader.upload(s3.primary)
     end
 
   end
