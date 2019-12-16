@@ -4,6 +4,7 @@ PATH
     amazon_static_site (0.1.0)
       activesupport
       aws-sdk-s3
+      better_tempfile
       cloudflare
       sinatra
 
@@ -32,7 +33,7 @@ GEM
       async-http (~> 0.42)
       protocol-http (~> 0.7)
     aws-eventstream (1.0.3)
-    aws-partitions (1.255.0)
+    aws-partitions (1.256.0)
     aws-sdk-core (3.86.0)
       aws-eventstream (~> 1.0, >= 1.0.2)
       aws-partitions (~> 1, >= 1.239.0)
@@ -47,6 +48,7 @@ GEM
       aws-sigv4 (~> 1.1)
     aws-sigv4 (1.1.0)
       aws-eventstream (~> 1.0, >= 1.0.2)
+    better_tempfile (0.1.0)
     cloudflare (4.2.0)
       async-rest (~> 0.10.0)
     coderay (1.1.2)

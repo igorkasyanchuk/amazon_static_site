@@ -4,9 +4,9 @@ module AmazonStaticSite
 
     def initialize(arguments)
       @config   = Config.new(file: arguments[0], folder: arguments[1])
-      @service  = Service.new(@config)
+      @service  = Service.new(config)
 
-      puts "Starting:"
+      puts "Starting".yellow
       puts "Config file: #{config.file}"
       puts "Folder to upload: #{config.folder}"
 
@@ -16,6 +16,7 @@ module AmazonStaticSite
       puts "Uploading to Amazon:"
       service.run_upload
 
+      puts "Configure Cloudflare:"
       service.run_cloudflare
     end
   end

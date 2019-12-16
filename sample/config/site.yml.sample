@@ -1,7 +1,6 @@
 domain:
   primary: "www.site.com"
   secondary: "site.com"
-  root: "site.com"
 s3:
   region: us-west-1
   access_key_id: "KEY"

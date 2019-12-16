@@ -14,12 +14,12 @@ module AmazonStaticSite
       s3.publish_static_website_on_s3
     end
 
-    def run_cloudflare
-      cloudflare.configure_dns
+    def run_upload
+      uploader.upload_to(s3.primary)
     end
 
-    def run_upload
-      uploader.upload(s3.primary)
+    def run_cloudflare
+      cloudflare.configure_dns
     end
 
   end

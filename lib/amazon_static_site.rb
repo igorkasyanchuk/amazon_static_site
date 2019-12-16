@@ -6,6 +6,9 @@ require 'aws-sdk-s3'
 require 'json'
 require 'cloudflare'
 require 'sinatra/base'
+require 'zlib'
+require 'better_tempfile'
+require 'mime/types'
 
 module AmazonStaticSite
   class Error < StandardError; end
