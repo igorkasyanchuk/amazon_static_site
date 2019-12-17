@@ -15,6 +15,7 @@ module AmazonStaticSite
 end
 
 require_relative './amazon_static_site/utils/string_ext.rb'
+require_relative './amazon_static_site/server.rb'
 require_relative './amazon_static_site/client/base.rb'
 require_relative './amazon_static_site/client/s3.rb'
 require_relative './amazon_static_site/client/upload.rb'

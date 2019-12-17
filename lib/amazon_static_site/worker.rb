@@ -2,8 +2,8 @@ module AmazonStaticSite
   class Worker
     attr_reader :config, :service
 
-    def initialize(arguments)
-      @config   = Config.new(file: arguments[0], folder: arguments[1])
+    def initialize(file:, folder:)
+      @config   = Config.new(file: file, folder: folder)
       @service  = Service.new(config)
 
       puts "Starting".yellow

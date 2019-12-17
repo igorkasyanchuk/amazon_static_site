@@ -6,7 +6,7 @@ module AmazonStaticSite
 
     def initialize(file:, folder:)
       @file    = file
-      @folder  = folder
+      @folder  = folder.gsub(/\/$/, '')
       @worker  = worker
       @options = JSON.parse(YAML.load_file(file).to_json, object_class: OpenStruct)
     end

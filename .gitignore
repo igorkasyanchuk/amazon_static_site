@@ -12,3 +12,6 @@
 
 sample/config/s3.yml
 sample/config/site.yml
+
+public/config/s3.yml
+public/config/site.yml

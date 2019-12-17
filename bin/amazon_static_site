@@ -2,13 +2,8 @@
 require_relative "../lib/amazon_static_site.rb"
 require "pry"
 
-if ARGV[0].to_s.downcase == 'serve'
-  require 'rack'
-  handler = Rack::Handler::WEBrick
-  app = LocalStaticSite.new
-  app.settings.public_folder = ARGV[1] || '.'
-  puts "Serving folder: #{app.settings.public_folder} on http://0.0.0.0:8080".green
-  handler.run app, Host: '0.0.0.0', Port: 8080
+if ARGV[0].to_s =~ /^(serve|s)$/i
+  AmazonStaticSite::Server.new.start
 else
-  AmazonStaticSite::Worker.new(ARGV)
+  AmazonStaticSite::Worker.new(file: ARGV[0], folder: ARGV[1])
 end

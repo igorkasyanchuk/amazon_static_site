@@ -10,12 +10,18 @@ module AmazonStaticSite
         result -= [config.file] # don not upload config file
 
         puts "Uploading:"
+
+        total_uploaded = 0
+
         result.each do |file|
           pathname  = Pathname.new(file)
           basename  = pathname.basename
           upload_to = pathname.to_s.gsub(config.folder, "").gsub(/^\//, "")
 
-          puts "    #{file}...".green
+          size = File.size(file)
+          total_uploaded += size
+
+          puts "    #{file}...#{filesize(size)}".green
           upload_file(file: file, upload_to: upload_to, destination: destination)
 
           if file.downcase =~ GZIP_FILES
@@ -27,15 +33,20 @@ module AmazonStaticSite
               gz.orig_name = temp_filename
               gz.write IO.binread(file)
             end
+
+            size = File.size(temp.path)
+            total_uploaded += size
+
             # print progress
             print "      GZip: #{temp_filename}".dark_green
-            print "...\n".green
+            print "...#{filesize(size)}\n".green
+
             upload_file(file: temp.path, upload_to: upload_to + ".gz", destination: destination)
-            upload_file(file: temp.path, upload_to: upload_to + ".gzip", destination: destination)
             # delete temp file
             temp.unlink
           end
         end
+        puts "Total uploaded: #{filesize(total_uploaded)}"
         result
       end
 
@@ -45,6 +56,17 @@ module AmazonStaticSite
           content_type: MIME::Types.type_for(file).first&.content_type
         }
         destination.object(upload_to).upload_file(file, aws_options)
+      end
+
+      def filesize(size)
+        units = ['B', 'KB', 'MB', 'GB', 'TB', 'Pb', 'EB']
+
+        return '0.0 B' if size == 0
+        exp = (Math.log(size) / Math.log(1024)).to_i
+        exp += 1 if (size.to_f / 1024 ** exp >= 1024 - 0.05)
+        exp = 6 if exp > 6 
+
+        '%.1f %s' % [size.to_f / 1024 ** exp, units[exp]]
       end
 
     end
