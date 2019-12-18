@@ -15,3 +15,6 @@ sample/config/site.yml
 
 public/config/s3.yml
 public/config/site.yml
+
+template/config.yml
+template/site.yml

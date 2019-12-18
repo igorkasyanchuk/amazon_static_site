@@ -2,8 +2,17 @@
 require_relative "../lib/amazon_static_site.rb"
 require "pry"
 
-if ARGV[0].to_s =~ /^(serve|s)$/i
+case ARGV[0].to_s
+when /^(serve|s|start|server)$/i
   AmazonStaticSite::Server.new.start
-else
+when /^(generate|g|new|n)$/i
+  AmazonStaticSite::Generator.new.start
+when /^(deploy|d|push|p|production)$/i
   AmazonStaticSite::Worker.new(file: ARGV[0], folder: ARGV[1])
+else
+  puts "amazon_static_site wrong parameters".red
+  puts "How to use:".yellow
+  puts "amazon_static_site generate NAME    # create new application using template in the gem"
+  puts "amazon_static_site server           # to start server and develop your HTML/CSS/JS locally in browser"
+  puts "amazon_static_site deploy           # to start server and develop your HTML/CSS/JS locally in browser"
 end

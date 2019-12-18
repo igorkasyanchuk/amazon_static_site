@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/igorkasyanchuk/amazon_static_site"
   spec.license       = "MIT"
 
-  spec.files         = Dir["{lib,spec,sample}/**/*", "Gemfile", "Gemfile.lock", "MIT-LICENSE", "Rakefile", "README.rdoc", "bin/amazon_static_site"]
+  spec.files         = Dir["{lib,spec,sample}/**/*", "template/config.yml.sample", "template/public/**/*", "Gemfile", "Gemfile.lock", "MIT-LICENSE", "Rakefile", "README.rdoc", "bin/amazon_static_site"]
 
   spec.executables   = ["amazon_static_site"]
   spec.bindir        = "bin"

@@ -2,7 +2,7 @@ module AmazonStaticSite
   class Server
     attr_reader :folder
 
-    def initialize(folder = ARGV[1] || '.')
+    def initialize(folder = ARGV[1] || './public')
       require 'rack'
       @folder = folder.gsub(/\/$/, '')
     end

@@ -4,7 +4,7 @@ module AmazonStaticSite
 
     delegate_missing_to :options
 
-    def initialize(file:, folder:)
+    def initialize(file: "./config.yml", folder: "./public")
       @file    = file
       @folder  = folder.gsub(/\/$/, '')
       @worker  = worker
