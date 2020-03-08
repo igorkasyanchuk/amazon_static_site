@@ -15,7 +15,7 @@ module AmazonStaticSite
       end
 
       def publish_static_website_on_s3
-        puts "Publish static web site:"
+        puts "Publish static web site:".yellow
         s3_client.put_bucket_website(
           bucket: config.domain.primary,
           website_configuration: {
@@ -27,7 +27,7 @@ module AmazonStaticSite
             }
           }
         )
-        puts "Primary DONE"
+        puts "  Primary #{config.domain.primary} DONE"
         s3_client.put_bucket_website(
           bucket: config.domain.secondary,
           website_configuration: {
@@ -37,7 +37,7 @@ module AmazonStaticSite
             },
           }
         )
-        puts "Secondary DONE"
+        puts "  Secondary #{config.domain.secondary} DONE"
       end
 
       def s3_primary; s3_domain(config.domain.primary); end

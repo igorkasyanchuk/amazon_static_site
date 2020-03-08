@@ -5,7 +5,7 @@ module AmazonStaticSite
         in_cloudflare do |connection|
           account_id = cloudflare_account_id(connection)
 
-          puts "Find or create #{domain_for_cloudflare} in account: #{account_id}"
+          puts "  find or create #{domain_for_cloudflare} in account: #{account_id}"
 
           zone = fetch_zone(connection)
           unless zone
@@ -14,22 +14,35 @@ module AmazonStaticSite
           end
 
           puts "Creating DNS records:".yellow
-          puts "- #{service.s3.s3_primary}"
-          puts "- #{service.s3.s3_secondary}"
+          puts "  - #{service.s3.s3_primary}"
+          puts "  - #{service.s3.s3_secondary}"
 
-          if primary_www?
-            www     = zone.dns_records.create('CNAME', 'www', service.s3.s3_primary, proxied: true)
-            non_www = zone.dns_records.create('CNAME', '.', service.s3.s3_secondary, proxied: true)
-          else
-            www     = zone.dns_records.create('CNAME', 'www', service.s3.s3_primary, proxied: true)
-            non_www = zone.dns_records.create('CNAME', '.', service.s3.s3_secondary, proxied: true)
+          puts "Generating ...".yellow
+          zone.dns_records.to_a.each do |record|
+            if record.type == 'CNAME' && (record.name == config.domain.secondary || record.name == config.domain.primary)
+              record.delete
+            end
           end
+          www     = zone.dns_records.create('CNAME', 'www', service.s3.s3_primary, proxied: true)
+          non_www = zone.dns_records.create('CNAME', '.', service.s3.s3_secondary, proxied: true)
 
-          puts '----'
-          puts www
-          puts non_www
-          puts '----'
-          puts zone
+          zone_info = []
+          zone_info << [
+            zone.value[:name],
+            zone.value[:name_servers].join('; '),
+            zone.value[:status]
+          ]
+          puts
+          puts "Domain settings (you need to chang nameservers for your domain)".green
+          puts Terminal::Table.new(headings: ["Name", "Name Servers", "Status"], rows: zone_info)
+          puts
+          puts "DNS settings".green
+          summary_info = []
+          [www, non_www].each do |e|
+            summary_info << [ e.type, e.name, ' => ', e.content, e.proxied ]
+          end
+          puts Terminal::Table.new(headings: ['Type', 'Name', nil, 'Destination', 'Proxied'], rows: summary_info)
+          puts "=> Done!".green
         end
       end
 

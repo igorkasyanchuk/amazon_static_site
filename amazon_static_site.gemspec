@@ -18,16 +18,18 @@ Gem::Specification.new do |spec|
 
   spec.executables   = ["amazon_static_site"]
   spec.bindir        = "bin"
-  spec.require_paths = ["lib", "bin"]  
+  spec.require_paths = ["lib", "bin"]
 
   spec.add_dependency "activesupport"
   spec.add_dependency 'aws-sdk-s3'
   spec.add_dependency 'cloudflare'
   spec.add_dependency 'sinatra'
   spec.add_dependency 'better_tempfile'
+  spec.add_dependency 'terminal-table'
+  spec.add_dependency 'mime-types'
 
   spec.add_development_dependency "bundler", "~> 1.17"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "pry"  
+  spec.add_development_dependency "pry"
 end

@@ -1,6 +1,9 @@
 #!/usr/bin/env ruby
 require_relative "../lib/amazon_static_site.rb"
-require "pry"
+begin
+  require "pry"
+rescue LoadError
+end
 
 case ARGV[0].to_s
 when /^(serve|s|start|server)$/i
@@ -8,11 +11,13 @@ when /^(serve|s|start|server)$/i
 when /^(generate|g|new|n)$/i
   AmazonStaticSite::Generator.new.start
 when /^(deploy|d|push|p|production)$/i
-  AmazonStaticSite::Worker.new(file: ARGV[0], folder: ARGV[1])
+  AmazonStaticSite::Worker.new(file: ARGV[1], folder: ARGV[2])
 else
   puts "amazon_static_site wrong parameters".red
   puts "How to use:".yellow
-  puts "amazon_static_site generate NAME    # create new application using template in the gem"
-  puts "amazon_static_site server           # to start server and develop your HTML/CSS/JS locally in browser"
-  puts "amazon_static_site deploy           # to start server and develop your HTML/CSS/JS locally in browser"
+  puts "amazon_static_site generate <NAME>                  # create new application using template in the gem"
+  puts "amazon_static_site server                           # to start server and develop your HTML/CSS/JS locally in browser"
+  puts "amazon_static_site deploy <CONFIG> <PATH-TO-PUBLIC> # to start server and develop your HTML/CSS/JS locally in browser"
+  puts "example:"
+  puts "amazon_static_site deploy site-folder/config.yml site-folder/public"
 end

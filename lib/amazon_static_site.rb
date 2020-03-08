@@ -9,6 +9,7 @@ require 'sinatra/base'
 require 'zlib'
 require 'better_tempfile'
 require 'mime/types'
+require 'terminal-table'
 
 module AmazonStaticSite
   class Error < StandardError; end
