@@ -12,8 +12,12 @@ This CLI tool allows you to upload a folder with your files to S3, configure for
   $ gem install amazon_static_site
 ```  
     
-  And run `amazon_static_site generate site123`.
-  `cd site123`
+  And run 
+
+```
+  amazon_static_site generate site123
+  cd site123
+```
   
   Edit `config.yml`.
     
@@ -31,13 +35,34 @@ This CLI tool allows you to upload a folder with your files to S3, configure for
 
 ## Usage
 
-`bundle exec./bin/amazon_static_site deploy ./template/config.yml ./template/public`
+`amazon_static_site deploy ./template/config.yml ./template/public`
 
 You can use generator `amazon_static_site generate <app>`.
 
-## Local
+## Local development
 
-`bundle exec./bin/amazon_static_site serve ./template/config.yml ./template/public`
+`amazon_static_site serve ./template/config.yml ./template/public`
+
+## Options
+
+```
+domain:
+  primary: "www.railsjazz.com"
+  secondary: "railsjazz.com"
+s3:
+  region: us-west-1
+  access_key_id: "XXXXXXXXXXXXXXXXXXXXXXX"
+  secret_access_key: "YYYYYYYYYYYYYYYYYYYYYYYYYYYY"
+cloudflare:
+  email: my@email.com
+  api_key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+## React app
+
+For example you can create React app using `create-react-app`, do some coding, after this run `yarn build` and then copy files from `build/*` to the `public` folder to the generated amazon_static_site path. Or specify this `build` folder as public folder option.
+
+`amazon_static_site deploy ./config.yml /path/to/react-app/build`
 
 ## Development
 
@@ -49,7 +74,6 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 - Tests
 - Demo
 - Better documentation
-
 
 ## Contributing
 
