@@ -78,7 +78,6 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 
 - Check "non-www" domains
 - Tests
-- Demo
 - Better documentation
 
 ## Contributing
