@@ -2,7 +2,9 @@
 
 Upload static HTML/CSS/JS to the Amazon S3 and host HTTPS website for free using Cloudflare.
 
-This CLI tool allows you to upload a folder with your files to S3, configure for you Cloudflare account and map it all together so you will get a site with HTTPS.
+This tool allows you to upload a folder with your files to S3, configure for you Cloudflare account and map it all together so you will get a site with HTTPS.
+
+This gem was used to deploy my site to production. So it's ready for everyday use.
 
 ## Installation
 
