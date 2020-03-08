@@ -1,39 +1,55 @@
-# AmazonStaticSite
+# Static Site using Amazon S3 + Cloudflare + HTTPS
 
-Upload static HTML/CSS/JS to the Amazon S3 and host HTTPS site for free using Cloudflare.
+Upload static HTML/CSS/JS to the Amazon S3 and host HTTPS website for free using Cloudflare.
+
+This CLI tool allows you to upload a folder with your files to S3, configure for you Cloudflare account and map it all together so you will get a site with HTTPS.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+1. Install gem:
 
-```ruby
-gem 'amazon_static_site'
 ```
+  $ gem install amazon_static_site
+```  
+    
+  And run `amazon_static_site generate site123`.
+  `cd site123`
+  
+  Edit `config.yml`.
+    
+2. You need to have account on Amazon, you need to get API `access_key_id` and `secret_access_key` from Amazon.
 
-And then execute:
+3. You need to have an account on https://www.cloudflare.com/, and copy API-key from settings.
 
-    $ bundle
+4. You need to configure settings file, where you need to put your Amazon S3 keys, Cloudflare keys, and settings for a domain.
 
-Or install it yourself as:
+5. Run this CLI `amazon_static_site deploy <path-to-config> <path-to-public-folder>`
 
-    $ gem install amazon_static_site
+6. Check the previous logs, you will see settings for nameservers which you need to put (one time) on your hosting provider (where you host your domain), and wait few minutes/hours until DNS will be updated.
+
+7. You could make a changes to the HTML/CSS/JS and re-upload files. This time, you don't need to change nameservers.
 
 ## Usage
 
-`/usr/local/rvm/rubies/ruby-2.6.5/bin/ruby ./bin/amazon_static_site ./sample/config/site.yml ./sample`
-`/usr/local/rvm/rubies/ruby-2.6.5/bin/ruby ./bin/amazon_static_site serve ./sample`
+`bundle exec./bin/amazon_static_site deploy ./template/config.yml ./template/public`
+
+You can use generator `amazon_static_site generate <app>`.
 
 ## Local
+
+`bundle exec./bin/amazon_static_site serve ./template/config.yml ./template/public`
 
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+## TODO
+
+- Check "non-www" domains
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/amazon_static_site.
+You are welcome to contribute.
 
 ## License
 
