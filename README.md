@@ -6,6 +6,10 @@ This tool allows you to upload a folder with your files to S3, configure for you
 
 This gem was used to deploy my site to production. So it's ready for everyday use.
 
+## DEMO
+
+![demo upload file to s3](/docs/amazon_static_site.gif)
+
 ## Installation
 
 1. Install gem:
