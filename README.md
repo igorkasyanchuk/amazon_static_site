@@ -23,9 +23,9 @@ This gem was used to deploy my site to production. So it's ready for everyday us
   
   Edit `config.yml`.
     
-2. You need to have account on Amazon, you need to get API `access_key_id` and `secret_access_key` from Amazon.
+2. You need to have account on Amazon, you need to get API `access_key_id` and `secret_access_key` from Amazon: https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html
 
-3. You need to have an account on https://www.cloudflare.com/, and copy API-key from settings.
+3. You need to have an account on https://www.cloudflare.com/, and copy API-key from settings: https://support.cloudflare.com/hc/en-us/articles/200167836-Managing-API-Tokens-and-Keys
 
 4. You need to configure settings file, where you need to put your Amazon S3 keys, Cloudflare keys, and settings for a domain.
 
