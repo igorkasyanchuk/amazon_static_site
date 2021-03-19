@@ -1,6 +1,7 @@
 # Static Site using Amazon S3 + Cloudflare + HTTPS
 
 [![RailsJazz](https://github.com/igorkasyanchuk/rails_time_travel/blob/main/docs/my_other.svg?raw=true)](https://www.railsjazz.com)
+[![https://www.patreon.com/igorkasyanchuk](https://github.com/igorkasyanchuk/rails_time_travel/blob/main/docs/patron.svg?raw=true)](https://www.patreon.com/igorkasyanchuk)
 
 Upload static HTML/CSS/JS to the Amazon S3 and host HTTPS website for free using Cloudflare.
 
