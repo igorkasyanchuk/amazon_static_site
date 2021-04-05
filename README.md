@@ -1,10 +1,17 @@
 # Static Site using Amazon S3 + Cloudflare + HTTPS
 
+[![RailsJazz](https://github.com/igorkasyanchuk/rails_time_travel/blob/main/docs/my_other.svg?raw=true)](https://www.railsjazz.com)
+[![https://www.patreon.com/igorkasyanchuk](https://github.com/igorkasyanchuk/rails_time_travel/blob/main/docs/patron.svg?raw=true)](https://www.patreon.com/igorkasyanchuk)
+
 Upload static HTML/CSS/JS to the Amazon S3 and host HTTPS website for free using Cloudflare.
 
 This tool allows you to upload a folder with your files to S3, configure for you Cloudflare account and map it all together so you will get a site with HTTPS.
 
 This gem was used to deploy my site to production. So it's ready for everyday use.
+
+## DEMO
+
+![demo upload file to s3](/docs/amazon_static_site.gif)
 
 ## Installation
 
@@ -74,7 +81,6 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 
 - Check "non-www" domains
 - Tests
-- Demo
 - Better documentation
 
 ## Contributing
@@ -84,3 +90,6 @@ You are welcome to contribute.
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+[<img src="https://github.com/igorkasyanchuk/rails_time_travel/blob/main/docs/more_gems.png?raw=true"
+/>](https://www.railsjazz.com/)
