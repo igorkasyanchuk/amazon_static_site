@@ -11,7 +11,7 @@ module AmazonStaticSite
       handler = Rack::Handler::WEBrick
       app     = LocalStaticSite.new
       app.settings.public_folder = folder
-      puts "Starting server on folder: #{app.settings.public_folder} on http:/#{host}:#{port}".green
+      puts "Starting server on folder: #{app.settings.public_folder} on http://#{host}:#{port}".green
       handler.run app, Host: host, Port: port
     end
 

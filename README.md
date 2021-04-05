@@ -43,7 +43,7 @@ You can use generator `amazon_static_site generate <app>`.
 
 ## Local development
 
-`amazon_static_site serve ./template/config.yml ./template/public`
+`amazon_static_site serve ./template/public`
 
 ## Options
 
