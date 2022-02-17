@@ -7,6 +7,7 @@ module AmazonStaticSite
       def initialize(service)
         @service  = service
       end
+
     end
   end
 end

@@ -1,7 +1,7 @@
-require_relative './amazon_static_site/version'
-require 'active_support'
+require 'active_support/all'
 require 'yaml'
 require 'rake'
+require 'nokogiri'
 require 'aws-sdk-s3'
 require 'json'
 require 'cloudflare'
@@ -10,6 +10,8 @@ require 'zlib'
 require 'better_tempfile'
 require 'mime/types'
 require 'terminal-table'
+
+require_relative './amazon_static_site/version'
 
 module AmazonStaticSite
   class Error < StandardError; end
