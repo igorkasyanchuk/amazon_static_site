@@ -69,11 +69,13 @@ GEM
     mime-types (3.4.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2022.0105)
+    mini_portile2 (2.7.1)
     minitest (5.15.0)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     nio4r (2.5.8)
-    nokogiri (1.13.1-x86_64-linux)
+    nokogiri (1.13.1)
+      mini_portile2 (~> 2.7.0)
       racc (~> 1.4)
     protocol-hpack (1.4.2)
     protocol-http (0.22.5)
@@ -89,7 +91,7 @@ GEM
     rack (2.2.3)
     rack-protection (2.2.0)
       rack
-    rake (10.5.0)
+    rake (13.0.6)
     rspec (3.11.0)
       rspec-core (~> 3.11.0)
       rspec-expectations (~> 3.11.0)
@@ -124,7 +126,7 @@ DEPENDENCIES
   amazon_static_site!
   bundler
   pry
-  rake (~> 10.0)
+  rake (~> 13.0)
   rspec (~> 3.0)
 
 BUNDLED WITH
